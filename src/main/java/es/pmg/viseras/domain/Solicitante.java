@@ -62,7 +62,8 @@ public class Solicitante implements Serializable {
     @Column(name = "acepta_no_homologado", nullable = false)
     private Boolean aceptaNoHomologado;
 
-    @Column(name = "necesidad")
+    @NotNull
+    @Column(name = "necesidad", nullable = false)
     private Integer necesidad;
 
     @NotNull

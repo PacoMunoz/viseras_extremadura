@@ -73,7 +73,10 @@
         },
         {
             "fieldName": "necesidad",
-            "fieldType": "Integer"
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "horariosEntrega",

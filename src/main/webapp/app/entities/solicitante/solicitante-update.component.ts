@@ -25,7 +25,7 @@ export class SolicitanteUpdateComponent implements OnInit {
     direccion: [null, [Validators.required, Validators.maxLength(100)]],
     codigoPostal: [null, [Validators.required, Validators.maxLength(10)]],
     aceptaNoHomologado: [null, [Validators.required]],
-    necesidad: [],
+    necesidad: [null, [Validators.required]],
     horariosEntrega: [null, [Validators.required, Validators.maxLength(100)]],
     comentarios: [null, [Validators.maxLength(250)]],
     consentimiento: [null, [Validators.required]]

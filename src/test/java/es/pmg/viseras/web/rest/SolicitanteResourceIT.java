@@ -332,6 +332,24 @@ public class SolicitanteResourceIT {
 
     @Test
     @Transactional
+    public void checkNecesidadIsRequired() throws Exception {
+        int databaseSizeBeforeTest = solicitanteRepository.findAll().size();
+        // set the field null
+        solicitante.setNecesidad(null);
+
+        // Create the Solicitante, which fails.
+
+        restSolicitanteMockMvc.perform(post("/api/solicitantes")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(solicitante)))
+            .andExpect(status().isBadRequest());
+
+        List<Solicitante> solicitanteList = solicitanteRepository.findAll();
+        assertThat(solicitanteList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void checkHorariosEntregaIsRequired() throws Exception {
         int databaseSizeBeforeTest = solicitanteRepository.findAll().size();
         // set the field null
