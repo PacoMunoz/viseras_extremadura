@@ -7,11 +7,11 @@ entity Solicitante {
     localidad String required maxlength(30)
     direccion String required maxlength(100)
     codigoPostal String required maxlength(10)
-    aceptaNoHomologado required Boolean
-    necesidad Integer
+    aceptaNoHomologado Boolean required
+    necesidad Integer required
     horariosEntrega String required maxlength(100)
     comentarios String maxlength(250)
-    consentimiento required Boolean
+    consentimiento Boolean required
 }
 
 entity Donante {
@@ -23,7 +23,7 @@ entity Donante {
     codigoPostal String maxlength (10)
     aportacion String required maxlength(200)
     cuando String required maxlength(200)
-    consentimiento required Boolean
+    consentimiento Boolean required
 }
 
 

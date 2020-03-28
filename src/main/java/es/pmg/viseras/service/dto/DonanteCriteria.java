@@ -42,6 +42,8 @@ public class DonanteCriteria implements Serializable, Criteria {
 
     private StringFilter cuando;
 
+    private BooleanFilter consentimiento;
+
     public DonanteCriteria() {
     }
 
@@ -55,6 +57,7 @@ public class DonanteCriteria implements Serializable, Criteria {
         this.codigoPostal = other.codigoPostal == null ? null : other.codigoPostal.copy();
         this.aportacion = other.aportacion == null ? null : other.aportacion.copy();
         this.cuando = other.cuando == null ? null : other.cuando.copy();
+        this.consentimiento = other.consentimiento == null ? null : other.consentimiento.copy();
     }
 
     @Override
@@ -134,6 +137,14 @@ public class DonanteCriteria implements Serializable, Criteria {
         this.cuando = cuando;
     }
 
+    public BooleanFilter getConsentimiento() {
+        return consentimiento;
+    }
+
+    public void setConsentimiento(BooleanFilter consentimiento) {
+        this.consentimiento = consentimiento;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -153,7 +164,8 @@ public class DonanteCriteria implements Serializable, Criteria {
             Objects.equals(localidad, that.localidad) &&
             Objects.equals(codigoPostal, that.codigoPostal) &&
             Objects.equals(aportacion, that.aportacion) &&
-            Objects.equals(cuando, that.cuando);
+            Objects.equals(cuando, that.cuando) &&
+            Objects.equals(consentimiento, that.consentimiento);
     }
 
     @Override
@@ -167,7 +179,8 @@ public class DonanteCriteria implements Serializable, Criteria {
         localidad,
         codigoPostal,
         aportacion,
-        cuando
+        cuando,
+        consentimiento
         );
     }
 
@@ -183,6 +196,7 @@ public class DonanteCriteria implements Serializable, Criteria {
                 (codigoPostal != null ? "codigoPostal=" + codigoPostal + ", " : "") +
                 (aportacion != null ? "aportacion=" + aportacion + ", " : "") +
                 (cuando != null ? "cuando=" + cuando + ", " : "") +
+                (consentimiento != null ? "consentimiento=" + consentimiento + ", " : "") +
             "}";
     }
 

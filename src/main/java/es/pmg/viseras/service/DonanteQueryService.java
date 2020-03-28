@@ -109,6 +109,9 @@ public class DonanteQueryService extends QueryService<Donante> {
             if (criteria.getCuando() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getCuando(), Donante_.cuando));
             }
+            if (criteria.getConsentimiento() != null) {
+                specification = specification.and(buildSpecification(criteria.getConsentimiento(), Donante_.consentimiento));
+            }
         }
         return specification;
     }

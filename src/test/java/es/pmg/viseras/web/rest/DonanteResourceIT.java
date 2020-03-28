@@ -36,8 +36,8 @@ public class DonanteResourceIT {
     private static final String DEFAULT_NOMBRE_EMPRESA_O_PARTICULAR = "AAAAAAAAAA";
     private static final String UPDATED_NOMBRE_EMPRESA_O_PARTICULAR = "BBBBBBBBBB";
 
-    private static final String DEFAULT_EMAIL = "N7[@cliR.H]lD";
-    private static final String UPDATED_EMAIL = "OnwSFx@_zz.F";
+    private static final String DEFAULT_EMAIL = "p/53@EKr7.wO0,Sv";
+    private static final String UPDATED_EMAIL = "5]u@!--L.Pe0E+,";
 
     private static final String DEFAULT_TELEFONO = "AAAAAAAAAA";
     private static final String UPDATED_TELEFONO = "BBBBBBBBBB";
@@ -56,6 +56,9 @@ public class DonanteResourceIT {
 
     private static final String DEFAULT_CUANDO = "AAAAAAAAAA";
     private static final String UPDATED_CUANDO = "BBBBBBBBBB";
+
+    private static final Boolean DEFAULT_CONSENTIMIENTO = false;
+    private static final Boolean UPDATED_CONSENTIMIENTO = true;
 
     @Autowired
     private DonanteRepository donanteRepository;
@@ -89,7 +92,8 @@ public class DonanteResourceIT {
             .localidad(DEFAULT_LOCALIDAD)
             .codigoPostal(DEFAULT_CODIGO_POSTAL)
             .aportacion(DEFAULT_APORTACION)
-            .cuando(DEFAULT_CUANDO);
+            .cuando(DEFAULT_CUANDO)
+            .consentimiento(DEFAULT_CONSENTIMIENTO);
         return donante;
     }
     /**
@@ -107,7 +111,8 @@ public class DonanteResourceIT {
             .localidad(UPDATED_LOCALIDAD)
             .codigoPostal(UPDATED_CODIGO_POSTAL)
             .aportacion(UPDATED_APORTACION)
-            .cuando(UPDATED_CUANDO);
+            .cuando(UPDATED_CUANDO)
+            .consentimiento(UPDATED_CONSENTIMIENTO);
         return donante;
     }
 
@@ -139,6 +144,7 @@ public class DonanteResourceIT {
         assertThat(testDonante.getCodigoPostal()).isEqualTo(DEFAULT_CODIGO_POSTAL);
         assertThat(testDonante.getAportacion()).isEqualTo(DEFAULT_APORTACION);
         assertThat(testDonante.getCuando()).isEqualTo(DEFAULT_CUANDO);
+        assertThat(testDonante.isConsentimiento()).isEqualTo(DEFAULT_CONSENTIMIENTO);
     }
 
     @Test
@@ -253,6 +259,24 @@ public class DonanteResourceIT {
 
     @Test
     @Transactional
+    public void checkConsentimientoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = donanteRepository.findAll().size();
+        // set the field null
+        donante.setConsentimiento(null);
+
+        // Create the Donante, which fails.
+
+        restDonanteMockMvc.perform(post("/api/donantes")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(donante)))
+            .andExpect(status().isBadRequest());
+
+        List<Donante> donanteList = donanteRepository.findAll();
+        assertThat(donanteList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllDonantes() throws Exception {
         // Initialize the database
         donanteRepository.saveAndFlush(donante);
@@ -269,7 +293,8 @@ public class DonanteResourceIT {
             .andExpect(jsonPath("$.[*].localidad").value(hasItem(DEFAULT_LOCALIDAD)))
             .andExpect(jsonPath("$.[*].codigoPostal").value(hasItem(DEFAULT_CODIGO_POSTAL)))
             .andExpect(jsonPath("$.[*].aportacion").value(hasItem(DEFAULT_APORTACION)))
-            .andExpect(jsonPath("$.[*].cuando").value(hasItem(DEFAULT_CUANDO)));
+            .andExpect(jsonPath("$.[*].cuando").value(hasItem(DEFAULT_CUANDO)))
+            .andExpect(jsonPath("$.[*].consentimiento").value(hasItem(DEFAULT_CONSENTIMIENTO.booleanValue())));
     }
     
     @Test
@@ -290,7 +315,8 @@ public class DonanteResourceIT {
             .andExpect(jsonPath("$.localidad").value(DEFAULT_LOCALIDAD))
             .andExpect(jsonPath("$.codigoPostal").value(DEFAULT_CODIGO_POSTAL))
             .andExpect(jsonPath("$.aportacion").value(DEFAULT_APORTACION))
-            .andExpect(jsonPath("$.cuando").value(DEFAULT_CUANDO));
+            .andExpect(jsonPath("$.cuando").value(DEFAULT_CUANDO))
+            .andExpect(jsonPath("$.consentimiento").value(DEFAULT_CONSENTIMIENTO.booleanValue()));
     }
 
 
@@ -936,6 +962,58 @@ public class DonanteResourceIT {
         defaultDonanteShouldBeFound("cuando.doesNotContain=" + UPDATED_CUANDO);
     }
 
+
+    @Test
+    @Transactional
+    public void getAllDonantesByConsentimientoIsEqualToSomething() throws Exception {
+        // Initialize the database
+        donanteRepository.saveAndFlush(donante);
+
+        // Get all the donanteList where consentimiento equals to DEFAULT_CONSENTIMIENTO
+        defaultDonanteShouldBeFound("consentimiento.equals=" + DEFAULT_CONSENTIMIENTO);
+
+        // Get all the donanteList where consentimiento equals to UPDATED_CONSENTIMIENTO
+        defaultDonanteShouldNotBeFound("consentimiento.equals=" + UPDATED_CONSENTIMIENTO);
+    }
+
+    @Test
+    @Transactional
+    public void getAllDonantesByConsentimientoIsNotEqualToSomething() throws Exception {
+        // Initialize the database
+        donanteRepository.saveAndFlush(donante);
+
+        // Get all the donanteList where consentimiento not equals to DEFAULT_CONSENTIMIENTO
+        defaultDonanteShouldNotBeFound("consentimiento.notEquals=" + DEFAULT_CONSENTIMIENTO);
+
+        // Get all the donanteList where consentimiento not equals to UPDATED_CONSENTIMIENTO
+        defaultDonanteShouldBeFound("consentimiento.notEquals=" + UPDATED_CONSENTIMIENTO);
+    }
+
+    @Test
+    @Transactional
+    public void getAllDonantesByConsentimientoIsInShouldWork() throws Exception {
+        // Initialize the database
+        donanteRepository.saveAndFlush(donante);
+
+        // Get all the donanteList where consentimiento in DEFAULT_CONSENTIMIENTO or UPDATED_CONSENTIMIENTO
+        defaultDonanteShouldBeFound("consentimiento.in=" + DEFAULT_CONSENTIMIENTO + "," + UPDATED_CONSENTIMIENTO);
+
+        // Get all the donanteList where consentimiento equals to UPDATED_CONSENTIMIENTO
+        defaultDonanteShouldNotBeFound("consentimiento.in=" + UPDATED_CONSENTIMIENTO);
+    }
+
+    @Test
+    @Transactional
+    public void getAllDonantesByConsentimientoIsNullOrNotNull() throws Exception {
+        // Initialize the database
+        donanteRepository.saveAndFlush(donante);
+
+        // Get all the donanteList where consentimiento is not null
+        defaultDonanteShouldBeFound("consentimiento.specified=true");
+
+        // Get all the donanteList where consentimiento is null
+        defaultDonanteShouldNotBeFound("consentimiento.specified=false");
+    }
     /**
      * Executes the search, and checks that the default entity is returned.
      */
@@ -951,7 +1029,8 @@ public class DonanteResourceIT {
             .andExpect(jsonPath("$.[*].localidad").value(hasItem(DEFAULT_LOCALIDAD)))
             .andExpect(jsonPath("$.[*].codigoPostal").value(hasItem(DEFAULT_CODIGO_POSTAL)))
             .andExpect(jsonPath("$.[*].aportacion").value(hasItem(DEFAULT_APORTACION)))
-            .andExpect(jsonPath("$.[*].cuando").value(hasItem(DEFAULT_CUANDO)));
+            .andExpect(jsonPath("$.[*].cuando").value(hasItem(DEFAULT_CUANDO)))
+            .andExpect(jsonPath("$.[*].consentimiento").value(hasItem(DEFAULT_CONSENTIMIENTO.booleanValue())));
 
         // Check, that the count call also returns 1
         restDonanteMockMvc.perform(get("/api/donantes/count?sort=id,desc&" + filter))
@@ -1006,7 +1085,8 @@ public class DonanteResourceIT {
             .localidad(UPDATED_LOCALIDAD)
             .codigoPostal(UPDATED_CODIGO_POSTAL)
             .aportacion(UPDATED_APORTACION)
-            .cuando(UPDATED_CUANDO);
+            .cuando(UPDATED_CUANDO)
+            .consentimiento(UPDATED_CONSENTIMIENTO);
 
         restDonanteMockMvc.perform(put("/api/donantes")
             .contentType(MediaType.APPLICATION_JSON)
@@ -1025,6 +1105,7 @@ public class DonanteResourceIT {
         assertThat(testDonante.getCodigoPostal()).isEqualTo(UPDATED_CODIGO_POSTAL);
         assertThat(testDonante.getAportacion()).isEqualTo(UPDATED_APORTACION);
         assertThat(testDonante.getCuando()).isEqualTo(UPDATED_CUANDO);
+        assertThat(testDonante.isConsentimiento()).isEqualTo(UPDATED_CONSENTIMIENTO);
     }
 
     @Test

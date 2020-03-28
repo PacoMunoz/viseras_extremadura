@@ -24,11 +24,11 @@ export class SolicitanteUpdateComponent implements OnInit {
     localidad: [null, [Validators.required, Validators.maxLength(30)]],
     direccion: [null, [Validators.required, Validators.maxLength(100)]],
     codigoPostal: [null, [Validators.required, Validators.maxLength(10)]],
-    aceptaNoHomologado: [],
+    aceptaNoHomologado: [null, [Validators.required]],
     necesidad: [],
     horariosEntrega: [null, [Validators.required, Validators.maxLength(100)]],
     comentarios: [null, [Validators.maxLength(250)]],
-    consentimiento: []
+    consentimiento: [null, [Validators.required]]
   });
 
   constructor(protected solicitanteService: SolicitanteService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}

@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(DonanteService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Donante(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new Donante(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', false);
     });
 
     describe('Service methods', () => {
@@ -61,7 +61,8 @@ describe('Service Tests', () => {
             localidad: 'BBBBBB',
             codigoPostal: 'BBBBBB',
             aportacion: 'BBBBBB',
-            cuando: 'BBBBBB'
+            cuando: 'BBBBBB',
+            consentimiento: true
           },
           elemDefault
         );
@@ -85,7 +86,8 @@ describe('Service Tests', () => {
             localidad: 'BBBBBB',
             codigoPostal: 'BBBBBB',
             aportacion: 'BBBBBB',
-            cuando: 'BBBBBB'
+            cuando: 'BBBBBB',
+            consentimiento: true
           },
           elemDefault
         );

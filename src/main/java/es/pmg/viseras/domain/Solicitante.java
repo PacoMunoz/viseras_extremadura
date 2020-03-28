@@ -58,7 +58,8 @@ public class Solicitante implements Serializable {
     @Column(name = "codigo_postal", length = 10, nullable = false)
     private String codigoPostal;
 
-    @Column(name = "acepta_no_homologado")
+    @NotNull
+    @Column(name = "acepta_no_homologado", nullable = false)
     private Boolean aceptaNoHomologado;
 
     @Column(name = "necesidad")
@@ -73,7 +74,8 @@ public class Solicitante implements Serializable {
     @Column(name = "comentarios", length = 250)
     private String comentarios;
 
-    @Column(name = "consentimiento")
+    @NotNull
+    @Column(name = "consentimiento", nullable = false)
     private Boolean consentimiento;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

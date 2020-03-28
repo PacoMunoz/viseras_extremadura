@@ -38,7 +38,7 @@
                 <constraints nullable="false" />
             </column>
             <column name="acepta_no_homologado" type="boolean">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="necesidad" type="integer">
                 <constraints nullable="true" />
@@ -50,7 +50,7 @@
                 <constraints nullable="true" />
             </column>
             <column name="consentimiento" type="boolean">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>

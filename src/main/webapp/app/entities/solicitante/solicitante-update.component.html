@@ -133,6 +133,12 @@
                     <label class="form-control-label" for="field_necesidad">Cantidad Solicitada</label>
                     <input type="number" class="form-control" name="necesidad" id="field_necesidad"
                            formControlName="necesidad"/>
+                    <div *ngIf="editForm.get('necesidad')!.invalid && (editForm.get('necesidad')!.dirty || editForm.get('necesidad')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('necesidad')?.errors?.required">
+                            This field is required.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">

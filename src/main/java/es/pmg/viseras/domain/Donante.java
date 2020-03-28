@@ -60,6 +60,10 @@ public class Donante implements Serializable {
     @Column(name = "cuando", length = 200, nullable = false)
     private String cuando;
 
+    @NotNull
+    @Column(name = "consentimiento", nullable = false)
+    private Boolean consentimiento;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -172,6 +176,19 @@ public class Donante implements Serializable {
     public void setCuando(String cuando) {
         this.cuando = cuando;
     }
+
+    public Boolean isConsentimiento() {
+        return consentimiento;
+    }
+
+    public Donante consentimiento(Boolean consentimiento) {
+        this.consentimiento = consentimiento;
+        return this;
+    }
+
+    public void setConsentimiento(Boolean consentimiento) {
+        this.consentimiento = consentimiento;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -202,6 +219,7 @@ public class Donante implements Serializable {
             ", codigoPostal='" + getCodigoPostal() + "'" +
             ", aportacion='" + getAportacion() + "'" +
             ", cuando='" + getCuando() + "'" +
+            ", consentimiento='" + isConsentimiento() + "'" +
             "}";
     }
 }

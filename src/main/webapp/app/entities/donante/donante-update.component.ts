@@ -24,7 +24,8 @@ export class DonanteUpdateComponent implements OnInit {
     localidad: [null, [Validators.maxLength(100)]],
     codigoPostal: [null, [Validators.maxLength(10)]],
     aportacion: [null, [Validators.required, Validators.maxLength(200)]],
-    cuando: [null, [Validators.required, Validators.maxLength(200)]]
+    cuando: [null, [Validators.required, Validators.maxLength(200)]],
+    consentimiento: [null, [Validators.required]]
   });
 
   constructor(protected donanteService: DonanteService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -45,7 +46,8 @@ export class DonanteUpdateComponent implements OnInit {
       localidad: donante.localidad,
       codigoPostal: donante.codigoPostal,
       aportacion: donante.aportacion,
-      cuando: donante.cuando
+      cuando: donante.cuando,
+      consentimiento: donante.consentimiento
     });
   }
 
@@ -74,7 +76,8 @@ export class DonanteUpdateComponent implements OnInit {
       localidad: this.editForm.get(['localidad'])!.value,
       codigoPostal: this.editForm.get(['codigoPostal'])!.value,
       aportacion: this.editForm.get(['aportacion'])!.value,
-      cuando: this.editForm.get(['cuando'])!.value
+      cuando: this.editForm.get(['cuando'])!.value,
+      consentimiento: this.editForm.get(['consentimiento'])!.value
     };
   }
 

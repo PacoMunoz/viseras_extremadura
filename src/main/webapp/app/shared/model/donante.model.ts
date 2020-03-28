@@ -8,6 +8,7 @@ export interface IDonante {
   codigoPostal?: string;
   aportacion?: string;
   cuando?: string;
+  consentimiento?: boolean;
 }
 
 export class Donante implements IDonante {
@@ -20,6 +21,9 @@ export class Donante implements IDonante {
     public localidad?: string,
     public codigoPostal?: string,
     public aportacion?: string,
-    public cuando?: string
-  ) {}
+    public cuando?: string,
+    public consentimiento?: boolean
+  ) {
+    this.consentimiento = this.consentimiento || false;
+  }
 }
