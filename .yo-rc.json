@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "es.pmg.viseras"
+    },
+    "jhipsterVersion": "6.8.0",
+    "applicationType": "monolith",
+    "baseName": "ViserasExtremaduraSur",
+    "packageName": "es.pmg.viseras",
+    "packageFolder": "es/pmg/viseras",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MTJjYTc0ZjQ2ODRjMDQwZjU1MDRkMjI0YWU4NzA5MmM4M2VhZGYzYzM3YTJkYjQ1YWQwZTNiNjQxOWMzM2E2NmRhMTcwMjYwNjUyODhjZDNjMjFhNzk0ZmU3YzJlZTRjYzczZTUzOGViNzgyYzhhYTM1NDFhMmY5ZWVmNzFkM2I=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1585378395765,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}

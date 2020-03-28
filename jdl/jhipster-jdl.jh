@@ -1,0 +1,40 @@
+
+entity Solicitante {
+	nombreCentro String required maxlength(100)
+    personaContacto String required maxlength(100)
+    telefono String required maxlength(30)
+    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) 
+    localidad String required maxlength(30)
+    direccion String required maxlength(100)
+    codigoPostal String required maxlength(10)
+    aceptaNoHomologado Boolean
+    necesidad Integer
+    horariosEntrega String required maxlength(100)
+    comentarios String maxlength(250)
+    consentimiento Boolean
+}
+
+entity Donante {
+	nombreEmpresaOParticular String required maxlength (100)
+    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) 
+    telefono String required maxlength(30)
+    direccion String maxlength (100)
+    localidad String maxlength (100)
+    codigoPostal String maxlength (10)
+    aportacion String required maxlength(200)
+    cuando String required maxlength(200)
+}
+
+
+// Set pagination options
+paginate Solicitante, Donante with infinite-scroll
+
+filter all
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
