@@ -3,26 +3,27 @@ entity Solicitante {
 	nombreCentro String required maxlength(100)
     personaContacto String required maxlength(100)
     telefono String required maxlength(30)
-    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) 
+    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
     localidad String required maxlength(30)
     direccion String required maxlength(100)
     codigoPostal String required maxlength(10)
-    aceptaNoHomologado Boolean
+    aceptaNoHomologado required Boolean
     necesidad Integer
     horariosEntrega String required maxlength(100)
     comentarios String maxlength(250)
-    consentimiento Boolean
+    consentimiento required Boolean
 }
 
 entity Donante {
 	nombreEmpresaOParticular String required maxlength (100)
-    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) 
+    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
     telefono String required maxlength(30)
     direccion String maxlength (100)
     localidad String maxlength (100)
     codigoPostal String maxlength (10)
     aportacion String required maxlength(200)
     cuando String required maxlength(200)
+    consentimiento required Boolean
 }
 
 

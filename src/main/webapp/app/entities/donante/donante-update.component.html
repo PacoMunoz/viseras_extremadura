@@ -1,0 +1,154 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-donante-heading">Datos del Donante</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nombreEmpresaOParticular">Nombre Empresa o Particular</label>
+                    <input type="text" class="form-control" name="nombreEmpresaOParticular" id="field_nombreEmpresaOParticular"
+                           formControlName="nombreEmpresaOParticular"/>
+                    <div *ngIf="editForm.get('nombreEmpresaOParticular')!.invalid && (editForm.get('nombreEmpresaOParticular')!.dirty || editForm.get('nombreEmpresaOParticular')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombreEmpresaOParticular')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombreEmpresaOParticular')?.errors?.maxlength">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                    <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email')?.errors?.pattern">
+                            This field should follow pattern for "Email".
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_telefono">Teléfono</label>
+                    <input type="text" class="form-control" name="telefono" id="field_telefono"
+                           formControlName="telefono"/>
+                    <div *ngIf="editForm.get('telefono')!.invalid && (editForm.get('telefono')!.dirty || editForm.get('telefono')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('telefono')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('telefono')?.errors?.maxlength">
+                        This field cannot be longer than 30 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_direccion">Dirección</label>
+                    <input type="text" class="form-control" name="direccion" id="field_direccion"
+                           formControlName="direccion"/>
+                    <div *ngIf="editForm.get('direccion')!.invalid && (editForm.get('direccion')!.dirty || editForm.get('direccion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('direccion')?.errors?.maxlength">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_localidad">Localidad</label>
+                    <input type="text" class="form-control" name="localidad" id="field_localidad"
+                           formControlName="localidad"/>
+                    <div *ngIf="editForm.get('localidad')!.invalid && (editForm.get('localidad')!.dirty || editForm.get('localidad')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('localidad')?.errors?.maxlength">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_codigoPostal">Código Postal</label>
+                    <input type="text" class="form-control" name="codigoPostal" id="field_codigoPostal"
+                           formControlName="codigoPostal"/>
+                    <div *ngIf="editForm.get('codigoPostal')!.invalid && (editForm.get('codigoPostal')!.dirty || editForm.get('codigoPostal')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('codigoPostal')?.errors?.maxlength">
+                        This field cannot be longer than 10 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_aportacion">Aportación</label>
+                    <input type="text" class="form-control" name="aportacion" id="field_aportacion"
+                           formControlName="aportacion"/>
+                    <div *ngIf="editForm.get('aportacion')!.invalid && (editForm.get('aportacion')!.dirty || editForm.get('aportacion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('aportacion')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('aportacion')?.errors?.maxlength">
+                        This field cannot be longer than 200 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cuando">¿Cuándo, cómo y dónde dispondremos del material?</label>
+                    <input type="text" class="form-control" name="cuando" id="field_cuando"
+                           formControlName="cuando"/>
+                    <div *ngIf="editForm.get('cuando')!.invalid && (editForm.get('cuando')!.dirty || editForm.get('cuando')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cuando')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cuando')?.errors?.maxlength">
+                        This field cannot be longer than 200 characters.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-control-label" for="field_consentimiento">Consentimiento*</label>
+                <p>
+                    <small>
+                        Acepto que los datos contenidos en este formulario sean almacenados temporalmente y consultados/cedidos entre las distintas personas que contribuyen a la fabricación y/o entrega del material de modo gratuito con el único fin de realizar dichas entregas con la mayor celeridad posible. Una vez finalizadas las entregas todos los datos personales serán eliminados, no conservando ningún participante en este proyecto copia de los mismos.
+
+                    </small>
+                </p>
+                <input type="checkbox" class="form-control"  id="field_consentimiento"
+                       />
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancelar</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Enviar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
