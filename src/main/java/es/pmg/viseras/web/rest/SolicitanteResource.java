@@ -64,7 +64,8 @@ public class SolicitanteResource {
         }
         Solicitante result = solicitanteService.save(solicitante);
         return ResponseEntity.created(new URI("/api/solicitantes/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME,
+                result.getId().toString() + ". Mil gracias, nos pondremos en contacto con usted lo antes posible."))
             .body(result);
     }
 

@@ -22,37 +22,37 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--<th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>-->
                     <th scope="col"  jhiSortBy="nombreCentro"><span>Nombre Centro</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="personaContacto"><span>Persona Contacto</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="telefono"><span>Telefono</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="email"><span>Email</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="localidad"><span>Localidad</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="direccion"><span>Direccion</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="codigoPostal"><span>Codigo Postal</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="aceptaNoHomologado"><span>Acepta No Homologado</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--<th scope="col"  jhiSortBy="codigoPostal"><span>Codigo Postal</span> <fa-icon icon="sort"></fa-icon></th>-->
+                    <!--<th scope="col"  jhiSortBy="aceptaNoHomologado"><span>Acepta No Homologado</span> <fa-icon icon="sort"></fa-icon></th>-->
                     <th scope="col"  jhiSortBy="necesidad"><span>Necesidad</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="horariosEntrega"><span>Horarios Entrega</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="comentarios"><span>Comentarios</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="consentimiento"><span>Consentimiento</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--<th scope="col"  jhiSortBy="consentimiento"><span>Consentimiento</span> <fa-icon icon="sort"></fa-icon></th>-->
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
                 <tr *ngFor="let solicitante of solicitantes ;trackBy: trackId">
-                    <td><a [routerLink]="['/solicitante', solicitante.id, 'view']">{{ solicitante.id }}</a></td>
+                    <!--<td><a [routerLink]="['/solicitante', solicitante.id, 'view']">{{ solicitante.id }}</a></td>-->
                     <td>{{ solicitante.nombreCentro }}</td>
                     <td>{{ solicitante.personaContacto }}</td>
                     <td>{{ solicitante.telefono }}</td>
                     <td>{{ solicitante.email }}</td>
                     <td>{{ solicitante.localidad }}</td>
                     <td>{{ solicitante.direccion }}</td>
-                    <td>{{ solicitante.codigoPostal }}</td>
-                    <td>{{ solicitante.aceptaNoHomologado }}</td>
+                    <!--<td>{{ solicitante.codigoPostal }}</td>
+                    <td>{{ solicitante.aceptaNoHomologado }}</td>-->
                     <td>{{ solicitante.necesidad }}</td>
                     <td>{{ solicitante.horariosEntrega }}</td>
                     <td>{{ solicitante.comentarios }}</td>
-                    <td>{{ solicitante.consentimiento }}</td>
+                    <!--<td>{{ solicitante.consentimiento }}</td>-->
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

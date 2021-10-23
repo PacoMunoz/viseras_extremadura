@@ -63,6 +63,12 @@ export class DonanteComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadAll();
     this.registerChangeInDonantes();
+
+    const query = {};
+    query['key1'] = 'hola';
+    query['key2'] = 'admios';
+
+    console.log('*************************************************************************' + JSON.stringify(query));
   }
 
   ngOnDestroy(): void {

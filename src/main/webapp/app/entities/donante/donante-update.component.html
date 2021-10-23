@@ -97,8 +97,8 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_aportacion">Aportación</label>
-                    <input type="text" class="form-control" name="aportacion" id="field_aportacion"
-                           formControlName="aportacion"/>
+                    <textarea type="text" class="form-control" name="aportacion" id="field_aportacion"
+                              formControlName="aportacion" rows="3"></textarea>
                     <div *ngIf="editForm.get('aportacion')!.invalid && (editForm.get('aportacion')!.dirty || editForm.get('aportacion')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('aportacion')?.errors?.required">
@@ -113,8 +113,8 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_cuando">¿Cuándo, cómo y dónde dispondremos del material?</label>
-                    <input type="text" class="form-control" name="cuando" id="field_cuando"
-                           formControlName="cuando"/>
+                    <textarea type="text" class="form-control" name="cuando" id="field_cuando"
+                              formControlName="cuando" rows="3"></textarea>
                     <div *ngIf="editForm.get('cuando')!.invalid && (editForm.get('cuando')!.dirty || editForm.get('cuando')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('cuando')?.errors?.required">

@@ -64,7 +64,9 @@ public class DonanteResource {
         }
         Donante result = donanteService.save(donante);
         return ResponseEntity.created(new URI("/api/donantes/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
+            //.headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME,
+                result.getId().toString() + ". Mil gracias, nos pondremos en contacto con usted lo antes posible."))
             .body(result);
     }
 

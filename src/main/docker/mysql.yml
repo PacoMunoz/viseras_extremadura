@@ -2,12 +2,13 @@ version: '2'
 services:
   viserasextremadurasur-mysql:
     image: mysql:8.0.19
-    # volumes:
-    #     - ~/volumes/jhipster/ViserasExtremaduraSur/mysql/:/var/lib/mysql/
+    volumes:
+      - ~/volumes/jhipster/ViserasExtremaduraSur/mysql/:/var/lib/mysql/
     environment:
-      - MYSQL_USER=root
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=3QpZ(#ayR&3YFcG)
       - MYSQL_DATABASE=viserasextremadurasur
+      - MYSQL_USER=viseras
+      - MYSQL_PASSWORD=9ctXv8ZN
     ports:
       - 3306:3306
     command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
